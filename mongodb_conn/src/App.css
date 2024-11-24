@@ -1,0 +1,40 @@
+
+.formContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-Color: "#ffc2c2";
+  width: 100vw;
+  height: 100vh;
+}
+
+.formCss{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 450px;
+  width: 330px;
+  border: 2px solid brown;
+  border-radius: 5px;
+  background-color: rgb(98, 255, 255);
+}
+
+.inputCss{
+margin: 5px;
+padding: 5px;
+border: 2px solid brown;
+border-radius: 5px;
+
+}
+
+
+.buttonCss{
+  margin: 5px;
+  padding: 5px;
+  background-color: rgb(80, 132, 252);
+  width: 100px;
+
+}
