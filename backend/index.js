@@ -34,8 +34,8 @@ server.listen(PORT, () => {
 server.post("/user", async (req, res) => {
   // res.send(`port is ${PORT}`);
   let user = new User(); //user can be seen as an object of Collections or Row in a table
-  user.UserName = req.name;
-  user.UserEmail = req.email;
+  user.UserName = req.body.name;
+  user.UserEmail = req.body.email;
   const doc = await user.save();
   // console.log(req.body);
   console.log(doc);

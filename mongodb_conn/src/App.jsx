@@ -9,13 +9,13 @@ function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const [userList, setUserList] = useState();
+  const [userList, setUserList] = useState([]);
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [userList]);
 
-  let form = [{ name }, { email }];
+  let form = { name, email };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:8080/user", {
@@ -25,10 +25,15 @@ function App() {
         "Content-Type": "application/json",
       },
     });
+
+    setUserList(await response.json());
+    console.log("in handleOnSubmit type of userlist " + typeof userList);
+    // console.log("in handleOnSubmit userList length " + userList.length);
+    console.log(userList);
+
+    // console.log("in handleOnSubmit data " + data);
     // console.log(data);
-    // setUserList(...userList, data);
-    const data = await response.json();
-    setUserList(data);
+    // console.log("in handleOnSubmit length of userlist " + userList.length);
   };
 
   const getUsers = async () => {
@@ -37,6 +42,7 @@ function App() {
     });
     const data = await response.json();
     console.log(data);
+    // setUserList
   };
 
   return (
@@ -65,7 +71,12 @@ function App() {
       <div>
         <ul>
           <li>UserName---UserEmail</li>
-          <li></li>
+          {userList.map((user) => (
+            <li key={user._id}>
+              {user.name}
+              {user.email}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
